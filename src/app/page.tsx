@@ -10,10 +10,6 @@ import {
   RotateCcw,
   Loader2,
   Send,
-  Smartphone,
-  Monitor,
-  Wifi,
-  BatteryFull,
 } from "lucide-react";
 import { PROPERTIES } from "@/data/properties";
 import {
@@ -60,10 +56,7 @@ const AI_EXAMPLES = [
   "Apartamento amueblado en alquiler en Porlamar con garaje",
 ];
 
-type ViewMode = "desktop" | "mobile";
-
 export default function CatalogPage() {
-  const [viewMode, setViewMode] = useState<ViewMode | null>(null);
   const [properties, setProperties] = useState<Property[]>(PROPERTIES);
 
   useEffect(() => {
@@ -91,8 +84,6 @@ export default function CatalogPage() {
   const [isWhatsAppModalOpen, setIsWhatsAppModalOpen] = useState(false);
   const [singleShareProperty, setSingleShareProperty] =
     useState<Property | null>(null);
-
-  const isMobileFrame = viewMode === "mobile";
 
   const handleToggleSelect = (id: string) => {
     setSelectedIds((prev) =>
@@ -125,7 +116,7 @@ export default function CatalogPage() {
     if (filters.minBedrooms > 0) count++;
     count += filters.requiredFeatures.length;
     return count;
-  }, [filters, properties]);
+  }, [filters]);
 
   const filteredProperties = useMemo(() => {
     return properties.filter((prop) => {
@@ -178,86 +169,55 @@ export default function CatalogPage() {
     ? [singleShareProperty]
     : selectedProperties;
 
-  const catalogAppContent = (
-    <div className="min-h-full bg-white pb-28">
+  return (
+    <div className="min-h-dvh bg-white pb-28">
       {/* Compact App Header */}
-      <header
-        className={`sticky top-0 z-30 border-b border-[#DCE7F3] bg-white/95 backdrop-blur-md ${
-          isMobileFrame ? "" : "pt-[env(safe-area-inset-top)]"
-        }`}
-      >
-        <div
-          className={`mx-auto flex max-w-7xl items-center justify-between gap-2 py-3 ${
-            isMobileFrame ? "px-4" : "px-4 sm:px-6 lg:px-8"
-          }`}
-        >
-          <div className="flex min-w-0 items-center gap-2">
-            <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-[#0B2545] text-xs font-bold tracking-tight text-white">
+      <header className="sticky top-0 z-30 border-b border-[#DCE7F3] bg-white/95 pt-[env(safe-area-inset-top)] backdrop-blur-md">
+        <div className="mx-auto flex max-w-7xl items-center justify-between gap-2 px-4 py-3 sm:px-6 lg:px-8">
+          <div className="flex min-w-0 items-center gap-2.5">
+            <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-[#0B2545] text-xs font-bold tracking-tight text-white">
               50
             </div>
             <div className="min-w-0">
-              <span
-                className={`block truncate font-bold tracking-tight text-[#0B2545] ${
-                  isMobileFrame ? "text-[14px]" : "text-lg sm:text-xl"
-                }`}
-              >
+              <span className="block truncate text-base font-bold tracking-tight text-[#0B2545] sm:text-xl">
                 50cincuenta catálogo
               </span>
-              <span className="block truncate text-[10px] font-semibold uppercase tracking-[0.08em] text-[#476484]">
-                {isMobileFrame ? "Isla de Margarita" : "Isla de Margarita · Simulado"}
+              <span className="block truncate text-[10px] font-semibold uppercase tracking-[0.1em] text-[#476484]">
+                Isla de Margarita
               </span>
             </div>
           </div>
 
-          <div className="flex shrink-0 items-center gap-2">
-            {/* Switch to Mobile button when in Desktop mode */}
-            {viewMode === "desktop" && (
-              <button
-                type="button"
-                onClick={() => setViewMode("mobile")}
-                className="hidden items-center gap-1.5 rounded-full border border-[#DCE7F3] bg-white px-3 py-1.5 text-xs font-semibold text-[#0B2545] transition-colors hover:border-[#1658B8] hover:text-[#1658B8] sm:inline-flex"
-                title="Ver en marco de teléfono"
-              >
-                <Smartphone className="h-3.5 w-3.5 text-[#1658B8]" />
-                <span>Marco Mobile</span>
-              </button>
-            )}
-
-            {/* Segmented Mode Switcher (Catálogo | Buscador IA) */}
-            <div className="flex items-center rounded-full border border-[#DCE7F3] bg-[#F4F8FC] p-1">
-              <button
-                type="button"
-                onClick={() => setSearchMode("standard")}
-                className={`rounded-full px-2.5 py-1 text-xs font-semibold transition-all active:scale-95 ${
-                  searchMode === "standard"
-                    ? "bg-white text-[#0B2545] shadow-sm"
-                    : "text-[#476484]"
-                }`}
-              >
-                Catálogo
-              </button>
-              <button
-                type="button"
-                onClick={() => setSearchMode("ai")}
-                className={`inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-xs font-semibold transition-all active:scale-95 ${
-                  searchMode === "ai"
-                    ? "bg-[#1658B8] text-white shadow-sm"
-                    : "text-[#1658B8]"
-                }`}
-              >
-                <Sparkles className="h-3 w-3" />
-                IA
-              </button>
-            </div>
+          {/* Segmented Mode Switcher (Catálogo | Buscador IA) */}
+          <div className="flex shrink-0 items-center rounded-full border border-[#DCE7F3] bg-[#F4F8FC] p-1">
+            <button
+              type="button"
+              onClick={() => setSearchMode("standard")}
+              className={`rounded-full px-3 py-1.5 text-xs font-semibold transition-all active:scale-95 ${
+                searchMode === "standard"
+                  ? "bg-white text-[#0B2545] shadow-sm"
+                  : "text-[#476484]"
+              }`}
+            >
+              Catálogo
+            </button>
+            <button
+              type="button"
+              onClick={() => setSearchMode("ai")}
+              className={`inline-flex items-center gap-1 rounded-full px-3 py-1.5 text-xs font-semibold transition-all active:scale-95 ${
+                searchMode === "ai"
+                  ? "bg-[#1658B8] text-white shadow-sm"
+                  : "text-[#1658B8]"
+              }`}
+            >
+              <Sparkles className="h-3 w-3" />
+              IA
+            </button>
           </div>
         </div>
 
         {/* Unified Mobile-First Search Bar inside sticky header */}
-        <div
-          className={`mx-auto max-w-7xl pb-3 ${
-            isMobileFrame ? "px-4" : "px-4 sm:px-6 lg:px-8"
-          }`}
-        >
+        <div className="mx-auto max-w-7xl px-4 pb-3 sm:px-6 lg:px-8">
           {searchMode === "standard" ? (
             <div className="flex items-center gap-2">
               <div className="relative flex-1">
@@ -269,10 +229,8 @@ export default function CatalogPage() {
                   onChange={(e) =>
                     setFilters((f) => ({ ...f, query: e.target.value }))
                   }
-                  placeholder="Zona, ciudad o ref..."
-                  className={`w-full rounded-2xl border border-[#DCE7F3] bg-[#F4F8FC] py-2.5 pl-10 pr-8 text-[#0B2545] placeholder:text-[#7E98B5] focus:border-[#1658B8] focus:bg-white focus:outline-none ${
-                    isMobileFrame ? "text-sm" : "text-base sm:text-sm"
-                  }`}
+                  placeholder="Zona, ciudad o referencia..."
+                  className="w-full rounded-2xl border border-[#DCE7F3] bg-[#F4F8FC] py-2.5 pl-10 pr-8 text-base text-[#0B2545] placeholder:text-[#7E98B5] focus:border-[#1658B8] focus:bg-white focus:outline-none sm:text-sm"
                 />
                 {filters.query && (
                   <button
@@ -289,7 +247,7 @@ export default function CatalogPage() {
               <button
                 type="button"
                 onClick={() => setIsFilterSheetOpen(true)}
-                className={`relative inline-flex h-[42px] shrink-0 items-center gap-1.5 rounded-2xl border px-3.5 text-xs font-semibold transition-transform active:scale-95 ${
+                className={`relative inline-flex h-[42px] shrink-0 items-center gap-1.5 rounded-2xl border px-3.5 text-xs font-semibold transition-transform active:scale-95 sm:px-4 sm:text-sm ${
                   activeFilterCount > 0
                     ? "border-[#1658B8] bg-[#EBF3FB] text-[#1658B8]"
                     : "border-[#DCE7F3] bg-white text-[#0B2545]"
@@ -320,23 +278,21 @@ export default function CatalogPage() {
                   value={aiInput}
                   onChange={(e) => setAiInput(e.target.value)}
                   placeholder="Describe lo que busca tu cliente..."
-                  className={`w-full rounded-2xl border border-[#BBD6F5] bg-[#F4F8FC] py-2.5 pl-10 pr-4 text-[#0B2545] placeholder:text-[#7E98B5] focus:border-[#1658B8] focus:bg-white focus:outline-none ${
-                    isMobileFrame ? "text-sm" : "text-base sm:text-sm"
-                  }`}
+                  className="w-full rounded-2xl border border-[#BBD6F5] bg-[#F4F8FC] py-2.5 pl-10 pr-4 text-base text-[#0B2545] placeholder:text-[#7E98B5] focus:border-[#1658B8] focus:bg-white focus:outline-none sm:text-sm"
                 />
               </div>
               <button
                 type="submit"
                 disabled={isAiThinking || !aiInput.trim()}
                 aria-label="Buscar con IA"
-                className="inline-flex h-[42px] shrink-0 items-center gap-1.5 rounded-2xl bg-[#1658B8] px-3.5 text-xs font-semibold text-white transition-transform active:scale-95 disabled:opacity-50"
+                className="inline-flex h-[42px] shrink-0 items-center gap-1.5 rounded-2xl bg-[#1658B8] px-4 text-xs font-semibold text-white transition-transform active:scale-95 disabled:opacity-50 sm:text-sm"
               >
                 {isAiThinking ? (
                   <Loader2 className="h-4 w-4 animate-spin" />
                 ) : (
                   <Send className="h-4 w-4" />
                 )}
-                {!isMobileFrame && <span className="hidden sm:inline">Buscar</span>}
+                <span className="hidden sm:inline">Buscar</span>
               </button>
             </form>
           )}
@@ -344,11 +300,7 @@ export default function CatalogPage() {
 
         {/* Horizontal Swipeable Category / Collection Rail */}
         {searchMode === "standard" && (
-          <div
-            className={`mx-auto max-w-7xl border-t border-[#DCE7F3]/70 py-2.5 ${
-              isMobileFrame ? "px-4" : "px-4 sm:px-6 lg:px-8"
-            }`}
-          >
+          <div className="mx-auto max-w-7xl border-t border-[#DCE7F3]/70 px-4 py-2.5 sm:px-6 lg:px-8">
             <div
               className="no-scrollbar flex items-center gap-2 overflow-x-auto"
               style={{ touchAction: "pan-x pan-y" }}
@@ -401,21 +353,17 @@ export default function CatalogPage() {
         )}
       </header>
 
-      <main
-        className={`mx-auto max-w-7xl pt-5 ${
-          isMobileFrame ? "px-4" : "px-4 sm:px-6 sm:pt-7 lg:px-8"
-        }`}
-      >
+      <main className="mx-auto max-w-7xl px-4 pt-5 sm:px-6 sm:pt-7 lg:px-8">
         {/* AI Mode Helper / Results Banner */}
         {searchMode === "ai" && (
-          <section className="mb-5 rounded-2xl border border-[#BBD6F5] bg-[#F4F8FC] p-4">
+          <section className="mb-6 rounded-2xl border border-[#BBD6F5] bg-[#F4F8FC] p-4 sm:p-5">
             <div className="flex flex-wrap items-center justify-between gap-2">
               <div className="flex items-center gap-2">
                 <span className="rounded-full bg-[#1658B8] px-2.5 py-0.5 text-[11px] font-semibold text-white">
                   IA Simulada
                 </span>
                 <span className="text-xs font-medium text-[#476484]">
-                  Búsqueda natural
+                  Búsqueda semántica en lenguaje natural
                 </span>
               </div>
               {aiResponse && (
@@ -470,27 +418,19 @@ export default function CatalogPage() {
         )}
 
         {/* Section Title */}
-        <div
-          className={`mb-5 flex flex-col justify-between gap-2 ${
-            isMobileFrame ? "" : "sm:mb-7 sm:flex-row sm:items-end"
-          }`}
-        >
+        <div className="mb-5 flex flex-col justify-between gap-2 sm:mb-7 sm:flex-row sm:items-end">
           <div>
-            <h1
-              className={`font-bold leading-tight tracking-tight text-[#0B2545] ${
-                isMobileFrame ? "text-xl" : "text-2xl sm:text-3xl"
-              }`}
-            >
+            <h1 className="text-2xl font-bold leading-tight tracking-tight text-[#0B2545] sm:text-3xl">
               {searchMode === "ai" && aiResponse
                 ? "Selección sugerida para tu cliente"
                 : "Colección residencial"}
             </h1>
-            <p className="mt-1 text-xs text-[#476484]">
+            <p className="mt-1 text-xs text-[#476484] sm:text-sm">
               {displayedItems.length}{" "}
               {displayedItems.length === 1
                 ? "propiedad disponible"
                 : "propiedades disponibles"}{" "}
-              · Toca para ver galería y memoria
+              · Toca para ver galería y memoria de calidades
             </p>
           </div>
 
@@ -498,7 +438,7 @@ export default function CatalogPage() {
             <button
               type="button"
               onClick={handleResetFilters}
-              className="inline-flex items-center gap-1.5 self-start text-xs font-semibold text-[#1658B8] hover:underline"
+              className="inline-flex items-center gap-1.5 self-start text-xs font-semibold text-[#1658B8] hover:underline sm:self-auto"
             >
               <RotateCcw className="h-3.5 w-3.5" />
               Limpiar filtros ({activeFilterCount})
@@ -508,13 +448,7 @@ export default function CatalogPage() {
 
         {/* Property Feed Grid */}
         {displayedItems.length > 0 ? (
-          <div
-            className={`grid gap-5 ${
-              isMobileFrame
-                ? "grid-cols-1"
-                : "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 lg:gap-6"
-            }`}
-          >
+          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 lg:gap-6">
             {displayedItems.map(({ property, aiMatch }) => (
               <PropertyCard
                 key={property.id}
@@ -527,17 +461,17 @@ export default function CatalogPage() {
             ))}
           </div>
         ) : (
-          <div className="rounded-3xl border border-dashed border-[#BBD6F5] bg-[#F4F8FC] px-6 py-12 text-center">
+          <div className="rounded-3xl border border-dashed border-[#BBD6F5] bg-[#F4F8FC] px-6 py-14 text-center">
             <p className="text-lg font-bold text-[#0B2545]">
               Sin resultados para estos criterios
             </p>
-            <p className="mt-1.5 text-xs text-[#476484]">
+            <p className="mt-1.5 text-sm text-[#476484]">
               Ajusta los filtros o prueba otra descripción en el buscador IA.
             </p>
             <button
               type="button"
               onClick={handleResetFilters}
-              className="mt-4 inline-flex items-center gap-2 rounded-2xl bg-[#1658B8] px-5 py-2.5 text-xs font-semibold text-white active:scale-95"
+              className="mt-5 inline-flex items-center gap-2 rounded-2xl bg-[#1658B8] px-5 py-2.5 text-sm font-semibold text-white active:scale-95"
             >
               <RotateCcw className="h-4 w-4" />
               Ver todo el catálogo
@@ -548,15 +482,9 @@ export default function CatalogPage() {
 
       {/* Native Floating Multi-Select WhatsApp Bar */}
       {selectedProperties.length > 0 && (
-        <div
-          className={`fixed inset-x-0 z-40 mx-auto max-w-xl px-3 ${
-            isMobileFrame
-              ? "bottom-3"
-              : "bottom-[calc(0.75rem+env(safe-area-inset-bottom))]"
-          }`}
-        >
-          <div className="flex items-center justify-between gap-2.5 rounded-2xl border border-[#1658B8]/25 bg-[#0B2545] p-2.5 pl-3 text-white shadow-2xl shadow-[#0B2545]/35">
-            <div className="flex min-w-0 items-center gap-2">
+        <div className="fixed inset-x-0 bottom-[calc(0.75rem+env(safe-area-inset-bottom))] z-40 mx-auto max-w-xl px-4">
+          <div className="flex items-center justify-between gap-3 rounded-2xl border border-[#1658B8]/25 bg-[#0B2545] p-2.5 pl-3.5 text-white shadow-2xl shadow-[#0B2545]/35">
+            <div className="flex min-w-0 items-center gap-2.5">
               <div className="flex -space-x-2">
                 {selectedProperties.slice(0, 3).map((p) => (
                   <img
@@ -568,7 +496,7 @@ export default function CatalogPage() {
                 ))}
               </div>
               <div className="min-w-0">
-                <div className="truncate text-xs font-bold">
+                <div className="truncate text-xs font-bold sm:text-sm">
                   {selectedProperties.length}{" "}
                   {selectedProperties.length === 1
                     ? "seleccionada"
@@ -579,7 +507,7 @@ export default function CatalogPage() {
                   onClick={() => setSelectedIds([])}
                   className="text-[11px] font-medium text-[#BBD6F5] hover:text-white"
                 >
-                  Limpiar
+                  Limpiar selección
                 </button>
               </div>
             </div>
@@ -590,7 +518,7 @@ export default function CatalogPage() {
                 setSingleShareProperty(null);
                 setIsWhatsAppModalOpen(true);
               }}
-              className="inline-flex shrink-0 items-center gap-1.5 rounded-xl bg-[#2E86DE] px-3.5 py-2.5 text-xs font-semibold text-white shadow-sm transition-transform active:scale-95 hover:bg-[#1658B8]"
+              className="inline-flex shrink-0 items-center gap-2 rounded-xl bg-[#2E86DE] px-4 py-2.5 text-xs font-semibold text-white shadow-sm transition-transform active:scale-95 hover:bg-[#1658B8] sm:text-sm"
             >
               <MessageCircle className="h-4 w-4" />
               <span>Enviar por WhatsApp</span>
@@ -607,7 +535,6 @@ export default function CatalogPage() {
         onChangeFilters={setFilters}
         onReset={handleResetFilters}
         resultCount={filteredProperties.length}
-        forceMobile={isMobileFrame}
       />
 
       {/* Property Detail Sheet/Modal */}
@@ -622,7 +549,6 @@ export default function CatalogPage() {
           setSingleShareProperty(prop);
           setIsWhatsAppModalOpen(true);
         }}
-        forceMobile={isMobileFrame}
       />
 
       {/* WhatsApp Share Sheet/Modal */}
@@ -641,146 +567,7 @@ export default function CatalogPage() {
             handleToggleSelect(id);
           }
         }}
-        forceMobile={isMobileFrame}
       />
     </div>
   );
-
-  /* 1. Initial Mode Selection Screen */
-  if (viewMode === null) {
-    return (
-      <div className="flex min-h-dvh flex-col items-center justify-center bg-gradient-to-br from-[#EEF4FC] via-[#FFFFFF] to-[#E2EEF9] p-5">
-        <div className="w-full max-w-lg rounded-3xl border border-[#DCE7F3] bg-white p-6 shadow-xl shadow-[#0B2545]/8 sm:p-8">
-          <div className="flex items-center gap-3">
-            <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-[#0B2545] text-sm font-bold text-white">
-              50
-            </div>
-            <div>
-              <h1 className="text-xl font-bold tracking-tight text-[#0B2545]">
-                50cincuenta catálogo
-              </h1>
-              <p className="text-xs font-medium text-[#476484]">
-                Isla de Margarita · Presentación interactiva
-              </p>
-            </div>
-          </div>
-
-          <p className="mt-6 text-base font-semibold text-[#0B2545]">
-            ¿Cómo deseas visualizar la aplicación?
-          </p>
-          <p className="mt-1 text-sm text-[#476484]">
-            Elige el modo de presentación. Podrás cambiar entre ambos en cualquier momento.
-          </p>
-
-          <div className="mt-6 grid gap-3.5 sm:grid-cols-2">
-            {/* Mobile Frame Option */}
-            <button
-              type="button"
-              onClick={() => setViewMode("mobile")}
-              className="group flex flex-col items-start rounded-2xl border-2 border-[#1658B8] bg-[#F4F8FC] p-4 text-left transition-all hover:bg-[#EBF3FB] active:scale-[0.98]"
-            >
-              <div className="flex w-full items-center justify-between">
-                <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#1658B8] text-white">
-                  <Smartphone className="h-5 w-5" />
-                </span>
-                <span className="rounded-full bg-[#1658B8]/15 px-2.5 py-0.5 text-[11px] font-bold text-[#1658B8]">
-                  Para cliente
-                </span>
-              </div>
-              <span className="mt-4 text-base font-bold text-[#0B2545]">
-                Modo Mobile
-              </span>
-              <span className="mt-1 text-xs leading-relaxed text-[#476484]">
-                Simula la app dentro de un marco de teléfono iPhone.
-              </span>
-            </button>
-
-            {/* Desktop Option */}
-            <button
-              type="button"
-              onClick={() => setViewMode("desktop")}
-              className="group flex flex-col items-start rounded-2xl border border-[#DCE7F3] bg-white p-4 text-left transition-all hover:border-[#1658B8] hover:bg-[#F4F8FC] active:scale-[0.98]"
-            >
-              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#EBF3FB] text-[#0B2545] group-hover:bg-[#0B2545] group-hover:text-white transition-colors">
-                <Monitor className="h-5 w-5" />
-              </div>
-              <span className="mt-4 text-base font-bold text-[#0B2545]">
-                Modo Desktop
-              </span>
-              <span className="mt-1 text-xs leading-relaxed text-[#476484]">
-                Vista a pantalla completa para ordenador o proyector.
-              </span>
-            </button>
-          </div>
-        </div>
-      </div>
-    );
-  }
-
-  /* 2. Mobile Phone Frame Mode */
-  if (viewMode === "mobile") {
-    return (
-      <div className="flex min-h-dvh flex-col items-center justify-center bg-gradient-to-br from-[#EDF4FC] via-[#F7FAFF] to-[#E1EDF9] px-3 py-4 sm:py-6">
-        {/* Top presenter switcher bar */}
-        <div className="mb-3 flex w-full max-w-[396px] items-center justify-between px-1">
-          <span className="inline-flex items-center gap-1.5 rounded-full bg-white/90 px-3 py-1 text-xs font-semibold text-[#0B2545] shadow-sm ring-1 ring-[#DCE7F3]">
-            <Smartphone className="h-3.5 w-3.5 text-[#1658B8]" />
-            Vista Mobile para cliente
-          </span>
-
-          <button
-            type="button"
-            onClick={() => setViewMode("desktop")}
-            className="inline-flex items-center gap-1.5 rounded-full bg-[#0B2545] px-3.5 py-1.5 text-xs font-semibold text-white shadow-sm transition-transform hover:bg-[#1658B8] active:scale-95"
-          >
-            <Monitor className="h-3.5 w-3.5" />
-            Ver en Desktop
-          </button>
-        </div>
-
-        {/* Realistic Phone Bezel */}
-        <div className="relative h-[min(830px,calc(100dvh-76px))] w-[min(393px,95vw)] rounded-[52px] border-[10px] border-[#0B2545] bg-[#0B2545] shadow-[0_32px_80px_-16px_rgba(11,37,69,0.42)]">
-          {/* Side hardware accents */}
-          <div className="pointer-events-none absolute -left-[13px] top-28 h-8 w-[3px] rounded-l-full bg-[#1C3B63]" />
-          <div className="pointer-events-none absolute -left-[13px] top-40 h-12 w-[3px] rounded-l-full bg-[#1C3B63]" />
-          <div className="pointer-events-none absolute -right-[13px] top-36 h-16 w-[3px] rounded-r-full bg-[#1C3B63]" />
-
-          {/* Screen Viewport (transform: translateZ(0) traps fixed sheets & bars inside the phone) */}
-          <div
-            className="relative flex h-full w-full flex-col overflow-hidden rounded-[42px] bg-white"
-            style={{ transform: "translateZ(0)" }}
-          >
-            {/* iOS Status Bar + Dynamic Island */}
-            <div className="relative z-40 flex shrink-0 items-center justify-between bg-white px-6 pb-2 pt-3 text-[11px] font-semibold text-[#0B2545]">
-              <span>9:41</span>
-
-              {/* Dynamic Island */}
-              <div className="absolute left-1/2 top-2.5 h-[22px] w-[92px] -translate-x-1/2 rounded-full bg-[#0B2545]" />
-
-              <div className="flex items-center gap-1.5">
-                <Wifi className="h-3.5 w-3.5" />
-                <BatteryFull className="h-4 w-4" />
-              </div>
-            </div>
-
-            {/* Scrollable App Area */}
-            <div
-              className="no-scrollbar flex-1 overflow-y-auto overflow-x-hidden"
-              style={{ overscrollBehavior: "contain" }}
-            >
-              {catalogAppContent}
-            </div>
-
-            {/* Home Indicator */}
-            <div className="pointer-events-none absolute inset-x-0 bottom-1.5 z-50 flex justify-center">
-              <div className="h-1 w-28 rounded-full bg-[#0B2545]/25" />
-            </div>
-          </div>
-        </div>
-      </div>
-    );
-  }
-
-  /* 3. Desktop Fullscreen Mode */
-  return catalogAppContent;
 }
