@@ -1,0 +1,668 @@
+import { Property } from "@/types/property";
+
+export const PROPERTIES: Property[] = [
+  {
+    id: "prop-01",
+    ref: "50-101",
+    title: "Penthouse Mirador de Pampatar",
+    subtitle: "Terraza solárium de 85 m² con piscina privada y vista frontal a la bahía",
+    operation: "Venta",
+    category: "Ático",
+    price: 340000,
+    priceFormatted: "$340.000",
+    city: "Pampatar",
+    neighborhood: "Playa El Ángel",
+    address: "Av. Aldonza Manrique, Res. Bahía Azul",
+    areaBuilt: 198,
+    areaUsable: 164,
+    terraceArea: 85,
+    bedrooms: 3,
+    bathrooms: 3,
+    floor: "Piso 7 (Dúplex)",
+    orientation: "Este - Sureste",
+    yearBuilt: 2024,
+    energyRating: "A",
+    garageSpaces: 2,
+    hasStorageRoom: true,
+    badge: "Estreno",
+    highlights: ["Vistas al mar", "Terraza amplia", "Piscina privada", "Muy luminoso"],
+    features: [
+      "Vistas al mar",
+      "Terraza",
+      "Piscina",
+      "Garaje",
+      "Domótica",
+      "Aerotermia",
+      "Planta eléctrica",
+      "Ascensor privado",
+    ],
+    description:
+      "Residencia exclusiva en última planta frente al mar Caribe, diseñada para aprovechar la brisa constante de Pampatar. Grandes ventanales de piso a techo integran el salón con la terraza panorámica hacia el Castillo San Carlos de Borromeo.",
+    memoriaCalidades: [
+      {
+        category: "Estructura y Fachada",
+        details: [
+          "Estructura de hormigón armado con tratamiento anticorrosivo marino en acero de refuerzo.",
+          "Fachada ventilada en piedra caliza blanca natural resistente a salinidad y radiación UV.",
+          "Barandillas de vidrio laminado de seguridad 8+8 con herrajes en acero inoxidable AISI 316.",
+        ],
+      },
+      {
+        category: "Carpintería y Acristalamiento",
+        details: [
+          "Ventanales panorámicos con rotura de puente térmico y control solar de alta eficiencia.",
+          "Doble acristalamiento acústico con cámara aislante.",
+          "Puerta principal de seguridad y carpintería interior lacada en blanco mate.",
+        ],
+      },
+      {
+        category: "Pavimentos y Revestimientos",
+        details: [
+          "Porcelánico rectificado de gran formato 120×120 cm tono arena marfil.",
+          "Deck exterior antideslizante en terraza solárium.",
+        ],
+      },
+      {
+        category: "Servicios y Autonomía",
+        details: [
+          "Planta eléctrica de cobertura total para áreas comunes y apartamentos.",
+          "Tanque de reserva de agua de 80.000 litros con sistema hidroneumático silencioso.",
+          "Aire acondicionado central inverter con control inteligente por zonas.",
+        ],
+      },
+      {
+        category: "Cocina y Baños",
+        details: [
+          "Cocina equipada con tope de cuarzo blanco, isla central y electrodomésticos en acero inoxidable.",
+          "Piezas sanitarias suspendidas y grifería monomando de acabado cepillado.",
+        ],
+      },
+    ],
+    photos: [
+      {
+        url: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1200&q=80",
+        caption: "Fachada contemporánea y terraza principal abierta al Caribe",
+      },
+      {
+        url: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=80",
+        caption: "Salón principal con ventanales de piso a techo y luz natural",
+      },
+      {
+        url: "https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?auto=format&fit=crop&w=1200&q=80",
+        caption: "Cocina abierta con isla en cuarzo blanco",
+      },
+      {
+        url: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80",
+        caption: "Terraza solárium con piscina privada",
+      },
+    ],
+  },
+  {
+    id: "prop-02",
+    ref: "50-102",
+    title: "Villa Brisas de Guacuco",
+    subtitle: "Arquitectura blanca en parcela de 1.150 m² con piscina infinita",
+    operation: "Venta",
+    category: "Villa",
+    price: 580000,
+    priceFormatted: "$580.000",
+    city: "La Asunción",
+    neighborhood: "Sector Guacuco",
+    address: "Calle Los Cocoteros, Qta. Brisas del Mar",
+    areaBuilt: 410,
+    areaUsable: 355,
+    terraceArea: 140,
+    bedrooms: 5,
+    bathrooms: 5,
+    floor: "2 niveles",
+    orientation: "Este",
+    yearBuilt: 2023,
+    energyRating: "A",
+    garageSpaces: 4,
+    hasStorageRoom: true,
+    badge: "Exclusiva",
+    highlights: ["Piscina infinita", "Jardín privado", "5 habitaciones", "A 3 min de la playa"],
+    features: [
+      "Piscina",
+      "Jardín",
+      "Terraza",
+      "Garaje",
+      "Domótica",
+      "Aerotermia",
+      "Vistas al mar",
+      "Seguridad 24h",
+    ],
+    description:
+      "Villa independiente de líneas puras en blanco cal y maderas tropicales certificadas. Pensada para disfrutar todo el año en Margarita con caney cubierto, parrillera exterior, cava climatizada y amplio jardín con palmas.",
+    memoriaCalidades: [
+      {
+        category: "Estructura y Envolvente",
+        details: [
+          "Losa de fundación impermeabilizada y estructura sismorresistente.",
+          "Paredes exteriores con cámara térmica y revestimiento elastomérico blanco lavable.",
+        ],
+      },
+      {
+        category: "Carpintería Exterior e Interior",
+        details: [
+          "Ventanales correderos de aluminio anodizado con vidrio laminado de seguridad.",
+          "Puertas interiores en madera de teca natural con cerraduras magnéticas.",
+        ],
+      },
+      {
+        category: "Instalaciones y Autonomía",
+        details: [
+          "Sistema híbrido de paneles solares de 8 kW con banco de baterías de litio.",
+          "Tanque subterráneo de 40.000 litros con sistema de filtración completo.",
+          "Piscina desbordante de cloración salina con iluminación LED.",
+        ],
+      },
+      {
+        category: "Acabados Interiores",
+        details: [
+          "Pisos en mármol travertino crema apomazado en áreas sociales y madera en habitaciones.",
+          "Iluminación arquitectónica indirecta en techos de doble altura.",
+        ],
+      },
+    ],
+    photos: [
+      {
+        url: "https://images.unsplash.com/photo-1613977257363-707ba9348227?auto=format&fit=crop&w=1200&q=80",
+        caption: "Vista exterior de la villa con piscina desbordante al atardecer",
+      },
+      {
+        url: "https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=1200&q=80",
+        caption: "Porche cubierto y transición directa hacia el jardín tropical",
+      },
+      {
+        url: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1200&q=80",
+        caption: "Salón de doble altura con tonos blancos y azules serenos",
+      },
+      {
+        url: "https://images.unsplash.com/photo-1616594039964-ae9021a400a0?auto=format&fit=crop&w=1200&q=80",
+        caption: "Suite principal con salida privada a terraza",
+      },
+    ],
+  },
+  {
+    id: "prop-03",
+    ref: "50-103",
+    title: "Apartamento Costa Azul Residences",
+    subtitle: "Piso alto remodelado con vista abierta al mar y cercanía a centros comerciales",
+    operation: "Venta",
+    category: "Piso",
+    price: 185000,
+    priceFormatted: "$185.000",
+    city: "Pampatar",
+    neighborhood: "Costa Azul",
+    address: "Av. Bolívar, Res. Costa Azul Suites",
+    areaBuilt: 162,
+    areaUsable: 148,
+    terraceArea: 18,
+    bedrooms: 3,
+    bathrooms: 2,
+    floor: "Piso 8",
+    orientation: "Sureste",
+    yearBuilt: 2021,
+    energyRating: "B",
+    garageSpaces: 2,
+    hasStorageRoom: true,
+    badge: "Remodelado",
+    highlights: ["Vista panorámica", "Piscina en conjunto", "2 puestos garaje", "Ubicación clave"],
+    features: [
+      "Terraza",
+      "Garaje",
+      "Piscina",
+      "Ascensor",
+      "Aire acondicionado",
+      "Vistas al mar",
+    ],
+    description:
+      "Apartamento de tres habitaciones íntegramente actualizado en 2025 en una de las zonas residenciales más cotizadas de Maneiro. Amplia sala-comedor con balcón, cocina moderna integrada y áreas sociales con piscina y caminerías.",
+    memoriaCalidades: [
+      {
+        category: "Remodelación Interior",
+        details: [
+          "Techos en drywall con foseado de iluminación LED cálida y neutra.",
+          "Pisos en porcelanato español rectificado tono piedra clara.",
+        ],
+      },
+      {
+        category: "Aislamiento y Ventanales",
+        details: [
+          "Ventanales panorámicos con lámina de control solar y aislamiento acústico.",
+          "Persianas enrollables motorizadas en sala y habitación principal.",
+        ],
+      },
+      {
+        category: "Climatización y Cocina",
+        details: [
+          "Equipos split inverter de alta eficiencia en todas las áreas.",
+          "Cocina equipada con tope de granito blanco y tope de inducción.",
+        ],
+      },
+    ],
+    photos: [
+      {
+        url: "https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=1200&q=80",
+        caption: "Salón principal con luz natural y acabados claros",
+      },
+      {
+        url: "https://images.unsplash.com/photo-1556912172-45b7abe8b7e1?auto=format&fit=crop&w=1200&q=80",
+        caption: "Cocina contemporánea integrada con isla",
+      },
+      {
+        url: "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=1200&q=80",
+        caption: "Habitación principal con vestier a medida",
+      },
+      {
+        url: "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=1200&q=80",
+        caption: "Baño en suite con revestimiento cerámico blanco",
+      },
+    ],
+  },
+  {
+    id: "prop-04",
+    ref: "50-104",
+    title: "Ático Playa Moreno Horizonte",
+    subtitle: "Vistas despejadas al mar con terraza esquinera de 48 m² frente a la costa",
+    operation: "Venta",
+    category: "Ático",
+    price: 260000,
+    priceFormatted: "$260.000",
+    city: "Porlamar",
+    neighborhood: "Playa Moreno",
+    address: "Calle Los Uveros, Res. Horizonte del Este",
+    areaBuilt: 155,
+    areaUsable: 132,
+    terraceArea: 48,
+    bedrooms: 3,
+    bathrooms: 2,
+    floor: "Piso 11",
+    orientation: "Sureste",
+    yearBuilt: 2022,
+    energyRating: "A",
+    garageSpaces: 2,
+    hasStorageRoom: true,
+    badge: "Destacado",
+    highlights: ["Terraza 48 m²", "Piscina frente al mar", "2 puestos garaje", "Muy luminoso"],
+    features: [
+      "Terraza",
+      "Piscina",
+      "Garaje",
+      "Ascensor",
+      "Vistas al mar",
+      "Seguridad 24h",
+    ],
+    description:
+      "Ático en esquina de un solo nivel con vistas abiertas hacia la bahía de Porlamar y Playa Moreno. Conjunto privado con vigilancia 24/7, piscina frente al mar, cancha deportiva y salida directa a la playa.",
+    memoriaCalidades: [
+      {
+        category: "Fachada y Carpinterías",
+        details: [
+          "Fachada revestida en tablilla blanca hidrofugada y detalles en porcelánico azul marino.",
+          "Ventanales de aluminio anodizado con cierres herméticos anti-brisa.",
+        ],
+      },
+      {
+        category: "Interiores y Confort",
+        details: [
+          "Closets modulares con iluminación interior automática.",
+          "Pisos en porcelanato antideslizante continuo entre sala y terraza.",
+        ],
+      },
+      {
+        category: "Áreas Comunes",
+        details: [
+          "Planta eléctrica total, tanque de agua de gran capacidad y pozo propio.",
+        ],
+      },
+    ],
+    photos: [
+      {
+        url: "https://images.unsplash.com/photo-1600607687644-c7171b42498f?auto=format&fit=crop&w=1200&q=80",
+        caption: "Salón comedor esquinero con salida directa a la terraza",
+      },
+      {
+        url: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1200&q=80",
+        caption: "Espacio diáfano con mobiliario minimalista y vistas al mar",
+      },
+      {
+        url: "https://images.unsplash.com/photo-1600573472591-ee6b68d14c68?auto=format&fit=crop&w=1200&q=80",
+        caption: "Terraza acondicionada para estar exterior",
+      },
+    ],
+  },
+  {
+    id: "prop-05",
+    ref: "50-105",
+    title: "Apartamento Ejecutivo Bella Vista",
+    subtitle: "Alquiler amueblado en zona residencial tranquila con estacionamiento techado",
+    operation: "Alquiler",
+    category: "Piso",
+    price: 1450,
+    priceFormatted: "$1.450/mes",
+    city: "Porlamar",
+    neighborhood: "Bella Vista",
+    address: "Av. Santiago Mariño, Edif. Mar Azul",
+    areaBuilt: 135,
+    areaUsable: 120,
+    bedrooms: 2,
+    bathrooms: 2,
+    floor: "Piso 4",
+    orientation: "Noreste",
+    yearBuilt: 2021,
+    energyRating: "A",
+    garageSpaces: 2,
+    hasStorageRoom: true,
+    badge: "Amueblado",
+    highlights: ["Recién amueblado", "Garaje techado", "Vigilancia 24h", "Internet fibra"],
+    features: [
+      "Garaje",
+      "Ascensor",
+      "Domótica",
+      "Aire acondicionado",
+      "Seguridad 24h",
+    ],
+    description:
+      "Apartamento de dos habitaciones con baño privado cada una y balcón luminoso. Totalmente equipado con mobiliario contemporáneo, lencería y fibra óptica de alta velocidad, ideal para estadías corporativas o residenciales en Porlamar.",
+    memoriaCalidades: [
+      {
+        category: "Interiores y Mobiliario",
+        details: [
+          "Mobiliario de línea moderna en madera clara, lino blanco y acentos en azul índigo.",
+          "Cocina equipada con lavavajillas, torre de lavado y electrodomésticos inverter.",
+        ],
+      },
+      {
+        category: "Tecnología y Seguridad",
+        details: [
+          "Cerradura electrónica digital y control de acceso biométrico en lobby.",
+          "Conexión de fibra óptica simétrica instalada.",
+        ],
+      },
+    ],
+    photos: [
+      {
+        url: "https://images.unsplash.com/photo-1600210491892-03d54c0aaf87?auto=format&fit=crop&w=1200&q=80",
+        caption: "Salón exterior con decoración en blancos y azules",
+      },
+      {
+        url: "https://images.unsplash.com/photo-1617806118233-18e1de247200?auto=format&fit=crop&w=1200&q=80",
+        caption: "Comedor independiente junto a la cocina",
+      },
+      {
+        url: "https://images.unsplash.com/photo-1618773928121-c32242e63f39?auto=format&fit=crop&w=1200&q=80",
+        caption: "Habitación principal en suite",
+      },
+    ],
+  },
+  {
+    id: "prop-06",
+    ref: "50-106",
+    title: "Casa Familiar en Jorge Coll",
+    subtitle: "Parcela privada con piscina climatizada, jardín y 4 habitaciones",
+    operation: "Venta",
+    category: "Chalet",
+    price: 395000,
+    priceFormatted: "$395.000",
+    city: "Maneiro",
+    neighborhood: "Urb. Jorge Coll",
+    address: "Calle Los Almendros, Qta. Las Palmas",
+    areaBuilt: 330,
+    areaUsable: 295,
+    terraceArea: 60,
+    bedrooms: 4,
+    bathrooms: 4,
+    floor: "2 niveles",
+    orientation: "Este",
+    yearBuilt: 2020,
+    energyRating: "B",
+    garageSpaces: 3,
+    hasStorageRoom: true,
+    highlights: ["Jardín consolidado", "Piscina privada", "4 habitaciones", "Estudio"],
+    features: [
+      "Piscina",
+      "Jardín",
+      "Terraza",
+      "Garaje",
+      "Seguridad 24h",
+    ],
+    description:
+      "Casa en urbanización cerrada con calle tranquila y acceso controlado en Maneiro. Distribución funcional con habitación de huéspedes y estudio en planta baja, gran salón hacia el porche y tres suites en planta alta.",
+    memoriaCalidades: [
+      {
+        category: "Construcción y Fachada",
+        details: [
+          "Fachada blanca con detalles en piedra natural coralina.",
+          "Impermeabilización integral en losa de techo con manto asfáltico aluminizado.",
+        ],
+      },
+      {
+        category: "Seguridad y Exteriores",
+        details: [
+          "Cerco eléctrico perimetral y cámaras CCTV conectadas a app móvil.",
+          "Riego automático en jardín y piscina de 8×4 metros con sistema de filtrado automático.",
+        ],
+      },
+    ],
+    photos: [
+      {
+        url: "https://images.unsplash.com/photo-1600585154363-67eb9e2e2099?auto=format&fit=crop&w=1200&q=80",
+        caption: "Fachada principal y acceso ajardinado",
+      },
+      {
+        url: "https://images.unsplash.com/photo-1600566752355-35792bedcfea?auto=format&fit=crop&w=1200&q=80",
+        caption: "Baño principal con doble lavamanos y luz natural",
+      },
+      {
+        url: "https://images.unsplash.com/photo-1600585152220-90363fe7e115?auto=format&fit=crop&w=1200&q=80",
+        caption: "Cocina familiar abierta hacia el jardín",
+      },
+    ],
+  },
+  {
+    id: "prop-07",
+    ref: "50-107",
+    title: "Loft Frente a Playa El Yaque",
+    subtitle: "Espacio diáfano con altillo y terraza a pasos de la zona de kitesurf",
+    operation: "Alquiler",
+    category: "Loft",
+    price: 1150,
+    priceFormatted: "$1.150/mes",
+    city: "El Yaque",
+    neighborhood: "Playa El Yaque",
+    address: "Av. Principal de El Yaque, Res. Wind & Sea",
+    areaBuilt: 118,
+    areaUsable: 105,
+    terraceArea: 28,
+    bedrooms: 2,
+    bathrooms: 2,
+    floor: "Planta baja + altillo",
+    orientation: "Sureste",
+    yearBuilt: 2023,
+    energyRating: "A",
+    garageSpaces: 1,
+    hasStorageRoom: true,
+    badge: "Cerca del mar",
+    highlights: ["Techos altos", "Patio privado", "Depósito equipos", "A 80 m de la playa"],
+    features: [
+      "Terraza",
+      "Garaje",
+      "Aire acondicionado",
+      "Vistas al mar",
+    ],
+    description:
+      "Loft contemporáneo diseñado para quienes buscan vivir frente a una de las mejores playas del Caribe para deportes náuticos. Incluye patio con ducha exterior, depósito ventilado para tablas y altillo acristalado para teletrabajo.",
+    memoriaCalidades: [
+      {
+        category: "Estructura y Espacios",
+        details: [
+          "Doble altura de 4,5 metros con estructura metálica tratada contra ambiente salino.",
+          "Altillo estructural con barandilla minimalista en acero blanco.",
+        ],
+      },
+      {
+        category: "Pavimentos y Clima",
+        details: [
+          "Microcemento continuo pulido resistente a arena y humedad.",
+          "Climatización split inverter de bajo consumo.",
+        ],
+      },
+    ],
+    photos: [
+      {
+        url: "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=1200&q=80",
+        caption: "Espacio principal diáfano con gran entrada de luz natural",
+      },
+      {
+        url: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=1200&q=80",
+        caption: "Zona de estar y comedor bajo techos de doble altura",
+      },
+      {
+        url: "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=1200&q=80",
+        caption: "Habitación en altillo con vista sobre el salón",
+      },
+    ],
+  },
+  {
+    id: "prop-08",
+    ref: "50-108",
+    title: "Casa Mirador de Juan Griego",
+    subtitle: "Residencia contemporánea sobre la bahía con terraza escalonada para atardeceres",
+    operation: "Venta",
+    category: "Chalet",
+    price: 420000,
+    priceFormatted: "$420.000",
+    city: "Juan Griego",
+    neighborhood: "La Galera",
+    address: "Subida al Fortín de La Galera, Qta. Ocaso",
+    areaBuilt: 245,
+    areaUsable: 215,
+    terraceArea: 52,
+    bedrooms: 4,
+    bathrooms: 3,
+    floor: "3 niveles",
+    orientation: "Oeste (puesta de sol)",
+    yearBuilt: 2022,
+    energyRating: "A",
+    garageSpaces: 2,
+    hasStorageRoom: true,
+    badge: "Vista bahía",
+    highlights: ["Atardeceres al mar", "Terraza 52 m²", "4 habitaciones", "Tanque 35.000 L"],
+    features: [
+      "Vistas al mar",
+      "Terraza",
+      "Garaje",
+      "Aerotermia",
+      "Domótica",
+    ],
+    description:
+      "Propiedad orientada al oeste sobre la bahía de Juan Griego para disfrutar los atardeceres más emblemáticos de la isla. Salón mirador acristalado, terraza social con bar exterior y acabados preparados para el clima costero.",
+    memoriaCalidades: [
+      {
+        category: "Envolvente Costera",
+        details: [
+          "Carpintería exterior de aluminio marino anodizado resistente a la brisa salina.",
+          "Vidrios laminados con filtro UV y aislamiento acústico.",
+        ],
+      },
+      {
+        category: "Interiorismo y Confort",
+        details: [
+          "Escalera flotante en madera de samán con pasamanos de vidrio.",
+          "Sistema de respaldo eléctrico automático con transferencia inmediata.",
+        ],
+      },
+    ],
+    photos: [
+      {
+        url: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1200&q=80",
+        caption: "Arquitectura exterior blanca con amplios voladizos",
+      },
+      {
+        url: "https://images.unsplash.com/photo-1600585154084-4e5fe7c39198?auto=format&fit=crop&w=1200&q=80",
+        caption: "Salón mirador panorámico con iluminación indirecta",
+      },
+      {
+        url: "https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=1200&q=80",
+        caption: "Terraza superior con vistas abiertas hacia la bahía",
+      },
+    ],
+  },
+  {
+    id: "prop-09",
+    ref: "50-109",
+    title: "Apartamento Calma en Playa El Agua",
+    subtitle: "Alquiler residencial frente al mar con terraza, piscina y áreas verdes",
+    operation: "Alquiler",
+    category: "Piso",
+    price: 1300,
+    priceFormatted: "$1.300/mes",
+    city: "Playa El Agua",
+    neighborhood: "Boulevard Playa El Agua",
+    address: "Av. 31 de Julio, Res. Palma Real",
+    areaBuilt: 125,
+    areaUsable: 108,
+    terraceArea: 22,
+    bedrooms: 2,
+    bathrooms: 2,
+    floor: "Piso 3",
+    orientation: "Este",
+    yearBuilt: 2023,
+    energyRating: "A",
+    garageSpaces: 1,
+    hasStorageRoom: true,
+    highlights: ["Frente al mar", "Piscina", "Terraza", "Recién estrenado"],
+    features: [
+      "Vistas al mar",
+      "Terraza",
+      "Piscina",
+      "Garaje",
+      "Ascensor",
+      "Aire acondicionado",
+    ],
+    description:
+      "Apartamento luminoso orientado al amanecer sobre el bulevar de Playa El Agua. Salón conectado a terraza cubierta, cocina equipada y acceso directo a piscina rodeada de jardines tropicales.",
+    memoriaCalidades: [
+      {
+        category: "Acabados y Carpintería",
+        details: [
+          "Pavimento porcelánico continuo efecto piedra caliza clara en interior y terraza.",
+          "Ventanales correderos en aluminio blanco con vidrio templado.",
+        ],
+      },
+      {
+        category: "Clima y Equipamiento",
+        details: [
+          "Aire acondicionado inverter en sala y dormitorios.",
+          "Cocina equipada con nevera, horno y lavadora-secadora.",
+        ],
+      },
+    ],
+    photos: [
+      {
+        url: "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1200&q=80",
+        caption: "Salón abierto con paleta blanca y azul marino",
+      },
+      {
+        url: "https://images.unsplash.com/photo-1600585153490-76fb20a32601?auto=format&fit=crop&w=1200&q=80",
+        caption: "Terraza privada con vista al mar",
+      },
+      {
+        url: "https://images.unsplash.com/photo-1600566752229-250ed79470f8?auto=format&fit=crop&w=1200&q=80",
+        caption: "Habitación doble con ventanal luminoso",
+      },
+    ],
+  },
+];
+
+export const ALL_QUICK_FEATURES = [
+  "Terraza",
+  "Piscina",
+  "Vistas al mar",
+  "Garaje",
+  "Jardín",
+  "Domótica",
+  "Aerotermia",
+];
